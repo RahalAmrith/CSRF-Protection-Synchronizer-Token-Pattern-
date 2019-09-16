@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Contact Us - Brand</title>
+    <title>Features - Brand</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
     <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
@@ -22,27 +22,25 @@
             <div class="collapse navbar-collapse"
                 id="navcol-1">
                 <ul class="nav navbar-nav ml-auto">
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="index.html">Home</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="Blog.html">Blog</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link text-lowercase" href="pricing.html">github</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="about-us.html">Notes</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link active" href="Login.html">Log in</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="index.php">Home</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link active" href="Blog.php">Blog</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link text-lowercase" href="https://github.com/RahalAmrith/CSRF-Protection-Synchronizer-Token-Pattern-">github</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="notes.php">Notes</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="Login.php">Log in</a></li>
                 </ul>
             </div>
         </div>
     </nav>
-    <main class="page contact-us-page">
-        <section class="clean-block clean-form dark">
+    <main class="page">
+        <section class="clean-block features">
             <div class="container">
                 <div class="block-heading">
-                    <h2 class="text-info">Log in</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo.</p>
+                    <h2 class="text-info">Protect Website from CSRF by Using<br><strong>Synchronizer Token Pattern</strong><br><br></h2>
                 </div>
-                <form>
-                    <div class="form-group"><label>User name</label><input class="form-control" type="text"></div>
-                    <div class="form-group"><label>Password</label><input type="password" class="form-control" /></div>
-                    <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Log in</button></div>
-                </form>
+            </div>
+            <div class="container">
+                <h1 style="font-size: 25px;">Heading</h1>
+                <p>Paragraph</p>
             </div>
         </section>
     </main>

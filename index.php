@@ -22,11 +22,11 @@
             <div class="collapse navbar-collapse"
                 id="navcol-1">
                 <ul class="nav navbar-nav ml-auto">
-                    <li class="nav-item" role="presentation"><a class="nav-link active" href="index.html">Home</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="Blog.html">Blog</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link text-lowercase" href="pricing.html">github</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="about-us.html">Notes</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="Login.html">Log in</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link active" href="index.php">Home</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="Blog.php">Blog</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link text-lowercase" href="https://github.com/RahalAmrith/CSRF-Protection-Synchronizer-Token-Pattern-">github</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="notes.php">Notes</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="Login.php">Log in</a></li>
                 </ul>
             </div>
         </div>
