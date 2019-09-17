@@ -1,3 +1,7 @@
+<?php
+session_start(); 
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -26,7 +30,15 @@
                     <li class="nav-item" role="presentation"><a class="nav-link active" href="Blog.php">Blog</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link text-lowercase" href="https://github.com/RahalAmrith/CSRF-Protection-Synchronizer-Token-Pattern-">github</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="notes.php">Notes</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="Login.php">Log in</a></li>
+                    
+                    <?php
+                        if(isset($_SESSION["cUser"])){
+                            echo '<li class="nav-item" role="presentation"><a class="nav-link" href="logOut.php">Log Out</a></li>';
+                        }
+                        else{
+                            echo '<li class="nav-item" role="presentation"><a class="nav-link" href="Login.php">Log in</a></li>';
+                        }
+                    ?>
                 </ul>
             </div>
         </div>
@@ -41,6 +53,8 @@
             <div class="container">
                 <h1 style="font-size: 25px;">Heading</h1>
                 <p>Paragraph</p>
+
+                <h1> <?php echo session_id() ?> </h1>
             </div>
         </section>
     </main>

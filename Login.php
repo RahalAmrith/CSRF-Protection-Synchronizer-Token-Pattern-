@@ -1,5 +1,11 @@
 <?php
 
+session_start();
+
+if (isset($_SESSION["cUser"])) {
+    header('Location: notes.php');
+}
+
 $errorMsg = ""; // variable to store error msg
 
 if (isset($_POST["login"])) {
@@ -14,6 +20,7 @@ if (isset($_POST["login"])) {
         $userPass = $_POST["uPass"];
 
         if ($userName == "csrftest" && $userPass == "letmein") {
+            $_SESSION["cUser"] = $userName;
             header('Location: notes.php');
         } else {
 

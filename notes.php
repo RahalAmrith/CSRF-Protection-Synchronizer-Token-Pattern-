@@ -1,3 +1,14 @@
+<?php
+
+session_start();
+
+if (!isset($_SESSION["cUser"])) {
+    header('Location: login.php');
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html>
 
@@ -26,7 +37,15 @@
                     <li class="nav-item" role="presentation"><a class="nav-link" href="Blog.php">Blog</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link text-lowercase" href="https://github.com/RahalAmrith/CSRF-Protection-Synchronizer-Token-Pattern-">github</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link active" href="notes.php">Notes</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="Login.php">Log in</a></li>
+                    
+                    <?php
+                        if(isset($_SESSION["cUser"])){
+                            echo '<li class="nav-item" role="presentation"><a class="nav-link" href="logOut.php">Log Out</a></li>';
+                        }
+                        else{
+                            echo '<li class="nav-item" role="presentation"><a class="nav-link" href="Login.php">Log in</a></li>';
+                        }
+                    ?>
                 </ul>
             </div>
         </div>
