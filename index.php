@@ -27,7 +27,7 @@ session_start();
                 id="navcol-1">
                 <ul class="nav navbar-nav ml-auto">
                     <li class="nav-item" role="presentation"><a class="nav-link active" href="index.php">Home</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="Blog.php">Blog</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="https://digitalcustode.blogspot.com/2019/10/csrf-protection-synchronizer-token_10.html">Blog</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link text-lowercase" href="https://github.com/RahalAmrith/CSRF-Protection-Synchronizer-Token-Pattern-">github</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="notes.php">Notes</a></li>
                     
