@@ -47,7 +47,9 @@ session_start();
         <section class="clean-block clean-hero" style="background-image: url(&quot;assets/img/protect-your-server.jpeg&quot;);background-attachment: fixed;color: rgba(0,0,0,0.9);height: calc(100vh - 80px);">
             <div class="text">
                 <h2>CSRF protection in web applications</h2>
-                <p>This Project describeds how to protect a web application from<strong> Cross-Site Request Forgery</strong> by using <strong>Synchronizer Token Pattern</strong></p><button class="btn btn-outline-light btn-lg" type="button">Log in</button></div>
+                <p>This Project describeds how to protect a web application from<strong> Cross-Site Request Forgery</strong> by using <strong>Synchronizer Token Pattern</strong></p>
+                <button onclick="window.location.href = 'Login.php'" class="btn btn-outline-light btn-lg" type="button">Log in</button>
+            </div>
         </section>
         <section class="clean-block clean-info dark">
             <div class="container">
@@ -63,7 +65,7 @@ session_start();
                         <div class="getting-started-info">
                             <p><br>This is a very simple concept to mitigate the risk of being attacked through CSRF. In most web applications, servers are using HTTP session objects to identify the logged in users. In this case, session is generated in
                                 the server side and pass the session ID to the client. This session ID is most of the time is saved in a client side cookie file.<br><br></p>
-                        </div><button class="btn btn-outline-primary btn-lg" type="button">Read More</button></div>
+                        </div><button onclick="window.location.href = 'https:\/\/digitalcustode.blogspot.com/2019/10/csrf-protection-synchronizer-token_10.html'" class="btn btn-outline-primary btn-lg" type="button">Read More</button></div>
                 </div>
             </div>
         </section>

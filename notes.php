@@ -13,8 +13,7 @@ $validRequest = false;
 if(isset($_POST['name'], $_POST['hiddenToken'], $_POST['content'])){
     
     $hiddenToken   = $_POST['hiddenToken'];
-    // 6) Obtain the session cookie and get the corresponding CSRF token for the session 
-    // and compare that with the received token value.
+    
     if(isset($_COOKIE['sessionID'])){
         $sessionID = $_COOKIE['sessionID'];
         $originalToken = Token::getTokenBySession($sessionID);
