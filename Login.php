@@ -2,6 +2,8 @@
 
 session_start();
 
+require_once 'Token.php';
+
 if (isset($_SESSION["cUser"])) {
     header('Location: notes.php');
 }
@@ -21,6 +23,13 @@ if (isset($_POST["login"])) {
 
         if ($userName == "csrftest" && $userPass == "letmein") {
             $_SESSION["cUser"] = $userName;
+
+            // generate csrf token
+            $sessionIdentifier = base64_encode(openssl_random_pseudo_bytes(32));
+            setcookie("sessionID", $sessionIdentifier);
+            
+            Token::generateToken($sessionIdentifier);
+
             header('Location: notes.php');
         } else {
 

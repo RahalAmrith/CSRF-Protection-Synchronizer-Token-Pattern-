@@ -2,10 +2,30 @@
 
 session_start();
 
+require_once 'Token.php';
+
 if (!isset($_SESSION["cUser"])) {
     header('Location: login.php');
 }
 
+$validRequest = false;
+
+if(isset($_POST['name'], $_POST['hiddenToken'], $_POST['content'])){
+    
+    $hiddenToken   = $_POST['hiddenToken'];
+    // 6) Obtain the session cookie and get the corresponding CSRF token for the session 
+    // and compare that with the received token value.
+    if(isset($_COOKIE['sessionID'])){
+        $sessionID = $_COOKIE['sessionID'];
+        $originalToken = Token::getTokenBySession($sessionID);
+        if($hiddenToken == $originalToken){
+            $validRequest = true;
+        }
+        else{
+            $validRequest = false;
+        }
+    }
+}
 ?>
 
 
@@ -25,26 +45,26 @@ if (!isset($_SESSION["cUser"])) {
     <link rel="stylesheet" href="assets/css/Article-List.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
     <link rel="stylesheet" href="assets/css/smoothproducts.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 
 <body>
     <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-dark clean-navbar">
         <div class="container"><a class="navbar-brand logo" href="#">Web Security</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse"
-                id="navcol-1">
+            <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="nav navbar-nav ml-auto">
                     <li class="nav-item" role="presentation"><a class="nav-link" href="index.php">Home</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="Blog.php">Blog</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link text-lowercase" href="https://github.com/RahalAmrith/CSRF-Protection-Synchronizer-Token-Pattern-">github</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link active" href="notes.php">Notes</a></li>
-                    
+
                     <?php
-                        if(isset($_SESSION["cUser"])){
-                            echo '<li class="nav-item" role="presentation"><a class="nav-link" href="logOut.php">Log Out</a></li>';
-                        }
-                        else{
-                            echo '<li class="nav-item" role="presentation"><a class="nav-link" href="Login.php">Log in</a></li>';
-                        }
+                    if (isset($_SESSION["cUser"])) {
+                        echo '<li class="nav-item" role="presentation"><a class="nav-link" href="logOut.php">Log Out</a></li>';
+                    } else {
+                        echo '<li class="nav-item" role="presentation"><a class="nav-link" href="Login.php">Log in</a></li>';
+                    }
                     ?>
                 </ul>
             </div>
@@ -57,10 +77,31 @@ if (!isset($_SESSION["cUser"])) {
                     <div class="block-heading" style="padding-top: 40px;margin-bottom: 18px;">
                         <h2 class="text-info">Create Note</h2>
                         <p>create a note for future usees</p>
+                        <?php
+                            if (isset($_POST['name'], $_POST['hiddenToken'], $_POST['content']) && $validRequest)
+                            {
+                                echo("<h3 style='background-color : #ffffff; color : #00ff00'> Done! Note saved Successfully </h3>");
+                            }
+                            elseif (isset($_POST['name'], $_POST['hiddenToken'], $_POST['content']) && !$validRequest){
+                                echo("<h3 style='background-color : #ffffff; color : #ff0000'> Unauthorized Request </h3>");
+                            }
+                        ?>
                     </div>
-                    <form>
-                        <div class="form-group"><label for="name">Title</label><input class="form-control item" type="text" id="name"></div>
-                        <div class="form-group"><label>Content</label><textarea class="form-control" style="height: 193px;"></textarea></div><button class="btn btn-primary btn-block" type="button">Save</button></form>
+                    <form method="POST">
+                        <div class="form-group">
+                            <label for="name">Title</label>
+                            <input class="form-control item" type="text" name="name" id="name">
+                        </div>
+                        <div class="form-group">
+                            <label>Content</label>
+                            <textarea name="content" class="form-control" style="height: 193px;"></textarea>
+                        </div>
+                        <input type="hidden" class="form-control" id="hiddenToken" name="hiddenToken">
+
+                        <button class="btn btn-primary btn-block" type="submit">Save</button>
+
+                        
+                    </form>
                 </div>
             </section>
         </section>
@@ -95,6 +136,24 @@ if (!isset($_SESSION["cUser"])) {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
     <script src="assets/js/smoothproducts.min.js"></script>
     <script src="assets/js/theme.js"></script>
+
+    <!-- ajax request for get token -->
+    <script>
+        $(function() {
+            // 4) Ajax call via a javascript, which invokes the endpoint for obtaining the CSRF token
+            // created for the session
+            $.ajax({
+                type: 'POST',
+                url: 'get_token.php',
+                success: function(result) {
+                    const res = JSON.parse(result);
+                    console.log(res.token);
+                    // 5) Add a new hidden field that has the value of the received CSRF token
+                    document.getElementById('hiddenToken').value = res.token;
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
