@@ -12,6 +12,7 @@ $validRequest = false;
 
 if(isset($_POST['name'], $_POST['hiddenToken'], $_POST['content'])){
     
+    
     $hiddenToken   = $_POST['hiddenToken'];
     
     if(isset($_COOKIE['sessionID'])){
@@ -139,15 +140,13 @@ if(isset($_POST['name'], $_POST['hiddenToken'], $_POST['content'])){
     <!-- ajax request for get token -->
     <script>
         $(function() {
-            // 4) Ajax call via a javascript, which invokes the endpoint for obtaining the CSRF token
-            // created for the session
             $.ajax({
                 type: 'POST',
                 url: 'get_token.php',
                 success: function(result) {
                     const res = JSON.parse(result);
                     console.log(res.token);
-                    // 5) Add a new hidden field that has the value of the received CSRF token
+                    // Add a new hidden field that has the value of the received CSRF token
                     document.getElementById('hiddenToken').value = res.token;
                 }
             });
