@@ -13,3 +13,8 @@
        * if above url is not working, please add the apache service port address after the localhost
                Eg : 
                     http://localhost:<apache service port address>/CSRF-Protection-Synchronizer-Token-Pattern-/
+
+4 >>>  Log in to the site using bellow credentials
+     
+      User Name     :    csrftest
+      Password      :    letmein
